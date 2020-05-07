@@ -1,0 +1,66 @@
+{% extends '../includes/base.html' %}
+{% block titulo %}Lista de Empleados - Admin {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1>Lista de todos los empleados</h1>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for e in object_list %}
+          <tr>
+            <th scope="row">{{e.id}}</th>
+            <td>{{e.primer_nombre}}</td>
+            <td>{{e.apellidos}}</td>
+            <td>{{e.departamento}}</td>
+            <td><a class="btn btn-warning" href="{% url 'personal_app:actualizar_empleado' e.id %}" role="button">Editar</a>
+                <a class="btn btn-danger" href="{% url 'personal_app:eliminar-empleado' e.id %}" role="button">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">Primera</a>
+        </li>
+        
+    {% endif %}
+    {% for pagina in paginator.page_range %}  
+    {% if pagina == page_objnumber %}
+    <li class="page-item disabled"><a class="page-link" href="?page={{pagina}}" >{{ pagina }}</a></li>
+    {% else %}
+    <li class="page-item "><a class="page-link" href="?page={{pagina}}">{{ pagina }}</a></li>
+
+    {% endif %}    
+    
+    {% endfor %}
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+{% endblock %}
+

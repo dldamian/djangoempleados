@@ -1,0 +1,21 @@
+{% extends '../includes/base.html' %}
+{% block titulo %}Agregar Nuevo Empleado{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1>Agregar personal</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+<form method="POST">{% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+</form>
+</div>
+</div>
+{% endblock %}

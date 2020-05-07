@@ -1,0 +1,18 @@
+{% extends '../includes/base.html' %}
+{%block titulo %} Eliminar Empleado {% endblock %}
+
+
+{% block content%}
+
+<div class="row">
+<div class="col"><h1>Eliminar</h1></div>
+</div>
+<div class="row">
+<div class="col">
+<form method="POST">{% csrf_token %}
+<p>Confirma que desea eliminar a {{ object.primer_nombre}}</p>
+<button type='submit' class="btn btn-danger">Confirmar</button>
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '../includes/base.html' %}
+
+{% block title %} Lista Departamentos{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <h1>Lista de  Departamentos</h1>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for departamento in departamentos %}
+          <tr>
+            <td>{{departamento.nombre}}</td>
+            <td>{{departamento.nombre_corto}}</td>
+            <td><a class="btn btn-primary" href="{% url 'personal_app:empleados-area' departamento.nombre_corto %}" role="button">Ver empleados</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

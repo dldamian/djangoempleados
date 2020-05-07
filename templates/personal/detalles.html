@@ -1,0 +1,19 @@
+{% extends '../includes/base.html' %}
+{% block titulo %}Detalles de empleado {% endblock %}
+
+
+{% block content%}
+<h1>Detalles de Personal  {{empleado.primer_nombre}}</h1>
+
+
+<h3>Todos los datos</h3>
+{{empleado.primer_nombre}}<br>
+{{empleado.apellidos}}<br>
+{{empleado.get_trabajo_display}}
+<ul>
+   {% for h in empleado.habilidad.all %}
+   <li>{{h.habilidad}}</li> 
+   {% endfor %}
+</ul>
+
+{% endblock %}
